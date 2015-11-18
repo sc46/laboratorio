@@ -1,0 +1,68 @@
+import java.util.Scanner;
+import java.lang.NumberFormatException;
+
+public class TwoComplementAdd2
+{	public static void main(String[] args)
+	{	Scanner in= new Scanner(System.in);
+    boolean valido= false;
+		int first=0;
+		int second=0;
+		System.out.println("inserisci una sequenza di bit");
+    while(!valido)
+		{	try{
+			String a= in.nextLine();
+      first= Integer.parseInt(a);
+			valido = true;
+      }
+      catch(NumberFormatException e)
+			{ System.out.println(" inserisci una sequenza di bit valida");
+			}
+    }
+  	boolean valido2= false;
+    System.out.println(" inserisci un altra sequenza di bit");
+		while(!valido2)
+    { try{
+      String b= in.nextLine();
+			second= Integer.parseInt(b)
+			valido2= true;
+			}
+      catch(NumberFormatException e)
+			{ System.out.println(" inserisci una sequenza di bit valida");
+			}
+		}
+
+		if(a.length() != b.length())
+    { System.err.println("i dati non sono compatibili, i due numeri devono essere della stessa lunghezza");
+ 			return;
+		}
+// esamino se i dati sono tutti 0 o 1
+  for(int i= 0; i< a.length(); i++)
+  {	if(a.charAt(i) !='0'	&& a.charAt(i)!= '1' || b.charAt(i) !='0' && b.charAt(i) !='1')
+		{ System.err.println(" dati non validi");
+		}
+	}
+  
+	String result="";
+	int lastCarryBit =0;
+  int lastButOneCarryBit= 0;
+`		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		  
+   
