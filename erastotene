@@ -1,0 +1,57 @@
+/**
+Esercizio 08-2
+
+Il Crivello di Eratostene è un noto algoritmo per la ricerca dei numeri primi minori di un certo valore massimo MAX, ed è così specificato:
+
+    si predispone un array di MAX valori booleani
+    ogni elemento dell'array "rappresenta" il numero intero corrispondente al proprio indice nell'array: se e solo se l'elemento è true, allora il numero corrispondente è stato eliminato dall'insieme dei numeri primi, cioè non è un numero primo
+    all'inizio si suppone che tutti i numeri siano primi; successivamente, si considera ciascun numero intero maggiore di uno, in ordine crescente, e si eliminano tutti i numeri che ne sono multipli, contrassegnandoli opportunamente nell'array (ad esempio, al primo passaggio vengono eliminati tutti i numeri pari; al secondo passaggio vengono eliminati tutti i multipli di 3, e così via
+    al termine, i numeri rimasti sono tutti e soli i numeri primi cercati, non essendo multipli di alcun numero
+
+Scrivere il programma Eratostene che utilizzi il Crivello di Eratostene per identificare i numeri primi minori di un valore (intero positivo) MAX fornito dall'utente attraverso l'ingresso standard.
+
+Si ricorda che 1 non è un numero primo.
+
+Verificare il corretto funzionamento del programma con:
+
+    MAX = 1 (non viene visualizzato nessun numero, perché non esiste nessun numero primo minore di 1)
+    MAX = 2 (non viene visualizzato nessun numero, perché non esiste nessun numero primo minore di 2)
+    MAX = 3 (viene visualizzato soltanto il numero 2)
+    MAX = 4 e MAX = 5 (vengono visualizzati soltanto i numeri 2 e 3)
+    MAX = 6 (vengono visualizzati soltanto i numeri 2, 3 e 5)
+*/
+import java.util.Scanner;
+import java.util.InputMismatchException;
+public class Erastotene
+{ public static void main(String[] args)
+	{ Scanner in= new Scanner(System.in);
+    int max;
+    do
+	  { System.out.println("inserisci il valore massimo, intero positivo");
+			try
+    	{max= in.nextInt();}
+			catch (InputMismatchException e)
+    	{ in.nextLine();
+      	max=0;
+    	}
+		} while(max<=0);
+   
+	boolean[] nonPrimes= new boolean[max];
+  //adesso assegno i valori true alle caselle dell array per eliminare i divisori
+  for(int i= 2; i< max; i++)
+  { int j= i+i;
+    while(j<max)
+    { nonPrimes[j]= true;
+      j+=i; 
+      System.out.println(j);
+    }
+	}
+
+
+System.out.println("Numeri primi minori di " + max + ":");
+      for (int i = 2; i < max; i++)
+         if (!nonPrimes[i]) // esegue solo se e vero cioe i falsi li porta a veri e i vero a falso
+            System.out.print(i + " ");
+      System.out.println();
+   }
+}
