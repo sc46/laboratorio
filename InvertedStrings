@@ -1,0 +1,59 @@
+import java.util.Scanner;
+public class InvertedStrings
+{ public static void main(String[] args)
+  { Scanner in=new Scanner(System.in);
+    System.out.println("inseriesci la prima stringa: ");
+    String prima= in.nextLine();
+   
+
+    System.out.println("inseriesci la seconda stringa: ");
+    String seconda= in.nextLine();
+    char[] c = toArray(prima);
+    char[] d = toArray(seconda);
+
+		if(reverseEquals(c,d))
+    System.out.println(" sono una l inversa dell' altra");
+    else
+    System.out.println(" non sono inverse");
+  }
+
+
+
+
+
+
+	public static char[] toArray(String s)
+	{ if(s==null)
+ 		throw new IllegalArgumentException();
+
+ 		char[] lettere= new char[s.length()];		
+		for(int i= 0; i< s.length(); i++)
+ 	  { lettere[i]=s.charAt(i);}
+  	return lettere;
+	}
+
+	public static boolean reverseEquals(char[] a, char[] b)
+	{ if(a==null || b==null)
+ 	  throw new IllegalArgumentException();
+ 
+ 		if(a.length != b.length)
+  	{ return false;
+  	}
+
+  	int count=0;
+  	int i=0; // indice dell array a 
+  	int j=b.length-1; // indice dell array b
+  	while(i< a.length && j>0)
+  	{
+   		if(a[i]==b[j])
+   		count+=1;
+      i++;
+      j--;
+  	}
+  	if(count==a.length-1)
+  	return true;
+  	else
+  	return false;
+  }
+
+}
