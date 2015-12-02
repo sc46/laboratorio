@@ -43,14 +43,14 @@ public class InvertedStrings
   	int count=0;
   	int i=0; // indice dell array a 
   	int j=b.length-1; // indice dell array b
-  	while(i< a.length && j>0)
+  	while(i< a.length && j>=0)
   	{
    		if(a[i]==b[j])
-   		count+=1;
+   		count++;
       i++;
       j--;
   	}
-  	if(count==a.length-1)
+  	if(count==a.length)
   	return true;
   	else
   	return false;
