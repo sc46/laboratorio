@@ -1,0 +1,54 @@
+import java.util.Scanner;
+public class TicTacToe
+{	public static void main(String[] args)
+	{	Scanner in= new Scanner(System.in);
+		boolean playAgain;
+		System.out.println("gioco del tris");
+		do
+		{ TicTacToeBoard b= new TicTacToeBoard();
+			char player= 'X';
+			while(!b.isWinning('X') && !b.isWinning('O') && b.getCount()!=9)
+			{	System.out.println("situazione");
+				System.out.println(b.toString());
+				System.out.println("inserire la mossa del giocatore" + " " + player);
+				int row,column;
+				try
+				{	row=Integer.parseInt(in.nextLine());
+					column= Integer.parseInt(in.nextLine());
+					if(b.setCharInPosition(row,column,player))
+					{	if(player=='X')
+							player= 'O';
+						else
+							player= 'X';
+					}
+					else
+          	System.out.println("posizione gia occupata");
+				}
+				catch(NumberFormatException e)
+				{	System.out.println("mossa errata");
+				}
+				catch(IllegalArgumentException e)
+				{ System.out.println("mossa errata");
+				}
+			}// chiude while
+		System.out.println("situazione temporanea");
+		System.out.println(b.toString());
+		if(b.isWinning('X'))
+			System.out.println(" vittoria del giocatore x ");
+		else if(b.isWinning('O'))
+			System.out.println(" vittoria del giocatore o ");
+		else
+			System.out.println("pareggio");
+		String s;
+    do
+		{ System.out.println("vuoi giocare un altra partita?");
+			s= in.nextLine();
+		}
+		while(!s.equalsIgnoreCase("Si") && !s.equalsIgnoreCase("NO"));
+		if(s.equalsIgnoreCase("SI"))
+			playAgain= true;
+		else
+			playAgain= false;
+  } while(playAgain);
+}
+}	
