@@ -1,0 +1,29 @@
+public class MyString
+{
+	private char[] ch;
+
+	public MyString(String s)
+	{ if(s==null)
+			throw new NullPointerException();
+		ch= new char[s.length()]
+	  for(int i= 0; i< s.length(); i++)
+			ch[i]= s.charAt[i];
+		return ch;
+	}
+
+	public char charAt(int index)
+  { if(index< 0 || index>= ch.length)
+			throw new ArrayOutOfBoundsException();
+   return ch[index];
+	}
+	
+	public int compareTo(MyString s)
+  { if(s==null)
+			throw new NullPointerException();
+		for(int i=0; i< ch.length && i< s.length(); i++)
+			if(ch[i]!=s.charAt(i))
+				return ch[i]-s.charAt(i);
+			if(ch.length!=s.length())
+				return ch.length- s.length();
+		return 0;
+	}
