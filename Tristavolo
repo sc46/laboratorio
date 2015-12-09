@@ -1,0 +1,67 @@
+public class TicTacToeBoard
+{ 
+	public TicTacToeBoard()
+	{	board= new char[3][3];
+		for(int i = 0; i< 3; i++)
+			for(int j = 0; j< 3; j++)
+       	board[i][j]='.';
+	}
+
+	public String toString()
+	{	String s= "";
+		for(int i = 0; i< 3; i++)
+		{	for(int j=0; j< 3; j++)
+				s+= board [i][j];
+        s+="\n";
+		}
+    return s;
+	}
+
+	public boolean setCharInPosition(int row, int column, char c)
+  { if( row<0 || column<0 || row> 2|| column> 2)
+			throw new IllegalArgumentException();
+		if(board[row][column]!='.')
+			return false;
+    board[row][column]=c;
+		return true;
+  }
+
+	public char getCharInPosition(int row, int column)
+	{ if(row<0 || column<0 || row> 2|| column> 2)
+  		throw new IllegalArgumentException();
+		return board[row][column];
+	}
+
+	public int getCount()
+	{	int count= 0;
+    for(int i = 0; i< 3 ; i++)
+			for(int j= 0; j< 3; j++)
+      	if(board[i][j]!='.')
+					count++;
+		return count;
+	}
+
+	public boolean isWinning(char c)
+	{ if(board[0][0]==c && board[0][1]==c && board[0][2]==c)
+			return true;
+	  else if(board[1][0]==c && board[1][1]==c && board[1][2]==c)
+    	return true;
+		else if( board[2][0]==c && board[2][1]==c && board[2][2]==c)
+			return true;
+		else if( board[0][0]==c && board[1][0]==c && board[2][0]==c)
+			return true;
+		else if( board[0][1]==c && board[1][1]==c && board[2][1]==c)
+			return true;
+		else if( board[0][2]==c && board[1][2]==c && board[2][2]==c)
+			return true;
+    else if( board[0][0]==c && board[1][1]==c && board[2][2]==c)
+      return true;
+		else if( board[0][2]==c && board[1][1]==c && board[2][0]==c)
+			return true;
+		else
+			return false;
+	}
+ private char[][] board;
+}
+		
+  	
